@@ -1,94 +1,67 @@
-### AI-Powered Disaster Intelligence Platform for Pakistan
+# Pakistan Flood Intelligence
 
-The **AI-Powered Disaster Intelligence Platform** is designed to help Pakistan better **predict, detect, assess, and respond to natural disasters**, beginning with floods—the country's most frequent natural hazard.
+An AI-assisted decision-support prototype for **planning and preparing resources before, during and after a flood in Pakistan**. It estimates flood risk, ranks damaged assets by recovery priority, and builds a repair plan that fits a budget and the available workers and equipment.
 
-The platform combines **Artificial Intelligence, Machine Learning, satellite imagery, weather information, historical disaster data, and GIS mapping** to transform scattered data into useful and actionable information. It can identify areas at risk of flooding, detect affected regions from satellite imagery, estimate the potential impact on populations, roads, buildings, and other infrastructure, and help determine which locations should receive attention first.
+> **Prototype only.** The recovery records are synthetic asset-level examples calibrated to NDMA 2025 infrastructure damage information, and costs and resource needs are estimates. Nothing here is an official flood warning, engineering assessment or government recovery decision.
 
-Instead of functioning as just another flood-warning system, the platform focuses on **decision support**. Government agencies, NGOs, humanitarian organizations, infrastructure companies, and other institutions could use a centralized dashboard to access risk maps, alerts, impact assessments, historical comparisons, and automated reports.
+## What the app does
 
-The project would initially be developed as a **small flood-focused MVP**, using available Pakistan-specific datasets. As the system develops, it could expand to cover other hazards such as **landslides, GLOFs, earthquakes, wildfires, and urban flooding**.
+The app has four tabs.
 
-The long-term goal is to create a **multi-hazard disaster intelligence platform for Pakistan** that helps organizations move from knowing a disaster is happening to understanding **where the greatest impact is, who may be affected, and where to prioritize resources**.
-
-For your **AI-Powered Disaster Intelligence Platform**, you can explain these three areas like this:
-
-### Key Features
-
-The MVP would focus on **flood intelligence for Pakistan** and include:
-
-- **Flood Risk Prediction:** Predicts the probability/risk level of flooding using rainfall, weather, historical flood, and geographic data.
-- **Interactive Risk Map:** Displays low-, medium-, and high-risk locations using GIS.
-- **Satellite Flood Detection:** Uses satellite imagery to identify areas currently affected by water.
-- **Impact Assessment:** Estimates potentially affected population, roads, buildings, and infrastructure.
-- **Priority Ranking:** Identifies locations that may require emergency assistance first.
-- **Alerts:** Generates warnings when an area's flood risk exceeds a defined threshold.
-- **Historical Analysis:** Compares current conditions with previous flood events.
-- **Automated Reports:** Generates summaries that organizations can use for planning and response.
-- **Future Multi-Hazard Support:** The same platform could later incorporate GLOFs, landslides, wildfires, earthquakes, and urban flooding.
-
-### Coding Languages & Technologies
-
-**Python** would be the primary programming language because most of the AI/ML and data-processing work can be handled with it.
-
-| Technology | Purpose |
+| Tab | What you can do |
 |---|---|
-| **Python** | Main programming language |
-| **Pandas / NumPy** | Cleaning and processing disaster/weather data |
-| **Scikit-learn** | Initial flood-risk prediction models |
-| **PyTorch / YOLO** | Satellite-image and damage detection as the project advances |
-| **GeoPandas / Rasterio** | Geographic and satellite data processing |
-| **OpenCV** | Image processing |
-| **FastAPI** | Connecting the AI model to the application |
-| **PostgreSQL + PostGIS** | Storing geographic/disaster information |
-| **JavaScript + Leaflet** | Interactive flood maps |
-| **Streamlit** | Simple option for building the first demo/dashboard |
+| **Predict Flood Risk** | Pick a province and area, enter expected rainfall and humidity, and get a flood-risk estimate from a model trained on historical flood records and tested on records it had not seen. |
+| **Plan Recovery** | See assets ranked by AI priority, set a budget (and optionally worker and equipment limits), and get a recommended repair plan with a schedule, a coverage gap, an explanation of why the top assets were chosen, a cost-uncertainty check, a budget what-if table and an equity check. You can also **add assets or upload a CSV** of updated data. |
+| **Future Resource Planning** | Explore Low, Moderate and Severe flood scenarios for a planning year, with a preparedness plan and indicative relief supplies (water, food, tents). |
+| **Dataset & Model** | Browse the data and see how well each model performs on records it had not seen. |
 
-For a student-level first MVP, you **don't need all of these immediately**. You could realistically start with:
+An optional **AI situation briefing** appears under each plan. Without an API key it shows a standard written summary built from the computed figures. With a key it is written by an AI model, but all numbers still come from the planning code.
 
-**Python + Pandas + Scikit-learn + Streamlit + mapping library**
+## Files
 
-and add the more advanced technologies later.
+```
+app.py                                        the Streamlit app
+requirements.txt                              packages to install
+Pakistan_flood_dataset.csv                    historical flood data (add this file here)
+pakistan_asset_recovery_2025_prototype.csv    prototype recovery data (add this file here)
+sample_data/                                  CSVs for trying the upload feature
+Netsol_Project_Demo.ipynb                     Colab notebook that runs the app
+.github/workflows/ci.yml                      automatic check on every push
+```
 
-### What the Demo Could Show
+Keep the two dataset files in the top folder. The app reads them from there; if they are not present it downloads them from this repository on GitHub.
 
-A good demo should tell a **story**, rather than simply showing your ML model.
+## Run it on your computer
 
-For example, the presenter selects **a district in Pakistan**.
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-**Step 1 — Data**
+## Run it in Google Colab
 
-The dashboard displays rainfall, weather conditions, historical flood information, and geographic information.
+Open `Netsol_Project_Demo.ipynb` in Colab and run the cells from top to bottom. The last cell prints a public link to the app.
 
-**Step 2 — AI Prediction**
+## Try the upload feature
 
-The model processes those features and displays something like:
+Open **Plan Recovery**, then **Add or upload assets**.
 
-> **Flood Risk: HIGH — 78%**
+- `sample_data/dummy_assets_clean.csv` has 30 test assets that all load correctly.
+- `sample_data/dummy_assets_messy.csv` has deliberate problems (bad ratings, a negative cost, a duplicate ID, unusual values) so you can see how the app reports them.
+- `sample_data/asset_upload_template.csv` shows the expected layout. Required columns: `province`, `area_name`, `asset_type`, `damage_severity_1_5`, `criticality_1_5`, `accessibility_1_5`, `population_served_or_affected_est`, `flood_impact_pct_est`, `estimated_repair_cost_pkr`. Workers, equipment and repair days are optional and estimated if left blank.
 
-This percentage should come from the model's estimated probability, not be a manually chosen number.
+Added assets stay in your browser session only and are lost when the page is refreshed.
 
-**Step 3 — Map**
+## Optional: AI-written briefings
 
-The dashboard highlights potentially high-risk locations on an interactive map.
+Set an `ANTHROPIC_API_KEY` as an environment variable, in Colab Secrets, or in Streamlit's secrets (`.streamlit/secrets.toml`). **Never commit a key to GitHub.** The plan summary (totals and the five highest-priority assets) is sent to the AI service to write the briefing. Without a key everything else works unchanged.
 
-**Step 4 — Impact**
+## Automatic checks
 
-The system could display:
+`.github/workflows/ci.yml` runs on every push and pull request. It installs the packages, checks `app.py` for errors, then opens the app and clicks through the main buttons.
 
-**Potentially affected population:** X  
-**Roads exposed:** X km  
-**Buildings exposed:** X  
-**High-priority zones:** X
+## Limitations
 
-Describe these as **exposure estimates**unless the system has verified damage.
-
-**Step 5 — Recommendation**
-
-The system converts the analysis into decision-support information:
-
-> **Priority: HIGH**  
-> Increased flood risk detected. Monitor vulnerable settlements and critical road connections.
-
-That final step demonstrates the main value of the project:
-
-**Raw Data → AI Prediction → Geographic Analysis → Impact Assessment → Actionable Insight**
+- The recovery priority labels are derived from the same inputs the model sees, so the model mainly learns that scoring rule. With real field-assessed priorities, the same pipeline would learn from actual decisions.
+- Future scenarios are what-if calculations, not forecasts.
+- Relief supply figures use editable planning assumptions (only the 15 litres of water per person per day is a standard humanitarian figure).
