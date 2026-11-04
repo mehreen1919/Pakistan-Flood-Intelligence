@@ -1,0 +1,13 @@
+asset_id,province,area_name,asset_type,damage,criticality,accessibility,population,flood_impact_pct,cost_pkr
+MESSY-01,punjab,Multan,road,4,4,2,"12,000",65,"8,500,000"
+MESSY-02,Sindh,Badin,Bridge,5,5,1,9000,80,PKR 42000000
+MESSY-03,Khyber Pakhtunkhwa,Swat,School,3,3,3,4200,45,11000000
+MESSY-04,Gilgit-Baltistan,Skardu,Water Supply,2,4,4,2500,30,9000000
+MESSY-05,Punjab,Kasur,Road,3,3,2,15000,55,6500000
+MESSY-06,Sindh,Dadu,Road,5,5,1,300,4,900000000
+MESSY-07,Punjab,Jhang,School,9,3,2,5000,40,12000000
+MESSY-08,Sindh,Thatta,Bridge,3,3,3,7000,50,-5
+MESSY-09,,Swat,Road,3,3,3,5000,40,6000000
+MESSY-10,Punjab,Vehari,Road,3,3,3,5000,140,6000000
+MESSY-05,Punjab,Rajanpur,Water Supply,4,4,3,22000,70,19000000
+MESSY-12,Sindh,Badin,Airport,4,4,2,6000,60,25000000

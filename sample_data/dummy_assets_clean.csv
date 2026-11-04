@@ -1,0 +1,31 @@
+asset_id,province,area_name,asset_type,damage_severity_1_5,criticality_1_5,accessibility_1_5,population_served_or_affected_est,flood_impact_pct_est,estimated_repair_cost_pkr,workers_required_est,equipment_units_est,repair_days_est
+TEST-001,Punjab,Multan,School,2,3,1,12800,79.6,11300000,32,6,25
+TEST-002,Sindh,Badin,Road,2,2,5,10116,76.2,5500000,25,1,15
+TEST-003,Khyber Pakhtunkhwa,Nowshera,Bridge,3,3,1,9975,56.3,29800000,43,3,43
+TEST-004,Punjab,Jhang,Bridge,3,5,2,16065,48.3,35100000,,,
+TEST-005,Punjab,Vehari,Water Supply,5,5,3,20004,93.3,34400000,58,4,53
+TEST-006,Gilgit-Baltistan,Ghanche,Road,2,3,4,3889,71.7,6000000,19,3,11
+TEST-007,Sindh,Thatta,School,4,2,1,23802,64.7,12700000,23,3,22
+TEST-008,Sindh,Thatta,Water Supply,3,2,4,30094,10.2,24200000,42,1,43
+TEST-009,Sindh,Dadu,Bridge,4,3,2,4350,97.1,45300000,64,1,63
+TEST-010,Khyber Pakhtunkhwa,Nowshera,School,2,3,3,7301,94.3,8300000,,,
+TEST-011,Sindh,Badin,Road,1,5,2,2220,34.8,4400000,15,5,7
+TEST-012,Punjab,Rajanpur,Bridge,1,5,4,18461,59.6,18400000,39,4,36
+TEST-013,Gilgit-Baltistan,Ghanche,Road,2,5,2,25525,68.0,4600000,16,4,17
+TEST-014,Punjab,Vehari,Water Supply,3,4,5,25556,45.4,19500000,40,1,36
+TEST-015,Punjab,Kasur,School,3,5,2,20664,67.7,16000000,36,3,29
+TEST-016,Punjab,Jhang,Bridge,2,3,1,29750,30.4,42600000,,,
+TEST-017,Sindh,Dadu,Water Supply,4,3,4,11219,20.4,28300000,47,4,41
+TEST-018,Sindh,Dadu,Bridge,3,2,5,17687,88.3,50300000,70,1,69
+TEST-019,Sindh,Dadu,School,5,5,5,11985,63.2,22800000,42,3,32
+TEST-020,Punjab,Multan,Bridge,5,2,2,21555,18.9,33500000,51,5,48
+TEST-021,Gilgit-Baltistan,Ghanche,Bridge,1,4,2,8781,21.2,25300000,40,5,37
+TEST-022,Punjab,Rajanpur,School,4,5,3,6260,78.8,19300000,,,
+TEST-023,Punjab,Rajanpur,Water Supply,3,2,3,5174,28.3,23900000,38,3,38
+TEST-024,Gilgit-Baltistan,Skardu,Road,5,4,1,10289,81.4,13200000,26,6,22
+TEST-025,Khyber Pakhtunkhwa,Swat,School,2,5,1,31378,65.3,8600000,26,5,21
+TEST-026,Sindh,Badin,Bridge,2,4,1,1713,60.8,38600000,58,4,60
+TEST-027,Sindh,Thatta,Water Supply,3,2,5,10308,78.1,25100000,47,4,34
+TEST-028,Khyber Pakhtunkhwa,Swat,Bridge,4,4,4,13943,88.8,35900000,,,
+TEST-029,Punjab,Kasur,School,2,3,4,14196,33.8,9700000,25,6,19
+TEST-030,Punjab,Rajanpur,Road,3,4,3,29688,47.0,6500000,24,3,14
