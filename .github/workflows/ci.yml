@@ -1,0 +1,110 @@
+# ============================================================================
+# App check for the Pakistan Flood Intelligence project
+#
+# What this file is: a GitHub Actions "workflow". GitHub reads it
+# automatically and runs the steps below on a temporary computer, so you find
+# out straight away if a change has broken the app.
+#
+# In short: install the app -> check the code -> open it and click the main
+# buttons. A green tick on GitHub means all of that worked.
+# ============================================================================
+name: App check
+
+# ---- WHEN to run -----------------------------------------------------------
+on:
+  push:
+    branches: [main]        # every time code is pushed to the main branch
+  pull_request:             # every time someone proposes a change
+  workflow_dispatch:        # lets you start it by hand from the Actions tab
+
+# ---- PERMISSIONS -----------------------------------------------------------
+# Read-only access: the check can look at the code but cannot change anything.
+permissions:
+  contents: read
+
+# ---- AVOID DOUBLE RUNS -----------------------------------------------------
+# If you push twice quickly, stop the older run and only finish the newest one.
+concurrency:
+  group: app-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-test:
+    # The temporary computer the check runs on (a standard Linux machine).
+    runs-on: ubuntu-latest
+    # Give up if it takes longer than 15 minutes, so a stuck run never hangs.
+    timeout-minutes: 15
+
+    # Settings the app reads when it starts.
+    env:
+      # Use the datasets stored in this repository instead of downloading them
+      # from the internet. These must match the file names in your repo.
+      FLOOD_CSV_PATH: Pakistan_flood_dataset.csv
+      RECOVERY_CSV_PATH: pakistan_asset_recovery_2025_prototype.csv
+
+    steps:
+      # STEP 1 - Download a copy of your repository onto the temporary computer
+      # so the later steps can use app.py and the CSV files.
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      # STEP 2 - Install Python (version 3.12, the same family Colab uses).
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip          # reuse downloaded packages to make later runs faster
+
+      # STEP 3 - Install the libraries listed in requirements.txt: Streamlit
+      # (the web page), pandas/numpy (data), scikit-learn (the AI models),
+      # scipy (the budget optimiser), altair (charts) and anthropic (optional
+      # AI briefing). Keeping the list in one file means GitHub, Colab and
+      # Streamlit Cloud all install exactly the same things.
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # STEP 4 - Quick first check: read through app.py and stop straight away
+      # if there is a typo or broken line that stops Python understanding it.
+      - name: Check the code has no syntax errors
+        run: python -m py_compile app.py
+
+      # STEP 5 - The main check: open the app the way a visitor would, press
+      # the three main buttons, and fail if any of them causes an error.
+      # (The script below is Python, run directly by this step.)
+      - name: Open the app and click through it
+        run: |
+          python - <<'PY'
+          from streamlit.testing.v1 import AppTest
+
+          # Look for any error shown on the page and stop with a clear message
+          # saying which step went wrong.
+          def check(at, step):
+              errors = [str(e.value) for e in at.exception]
+              assert not errors, f"{step} failed: {errors}"
+              print(f"OK: {step}")
+
+          # Find a button by the text written on it and press it.
+          def click(at, label):
+              for button in at.button:
+                  if button.label == label:
+                      button.click().run()
+                      return
+              raise AssertionError(f"Button not found: {label}")
+
+          # Open the app. The 180 means "wait up to 3 minutes" because the AI
+          # models are trained when the app first starts.
+          at = AppTest.from_file("app.py", default_timeout=180).run()
+          check(at, "app opens")
+
+          # Press each main button in turn: flood risk (first tab), recovery
+          # plan (second tab) and preparedness plan (third tab).
+          for label in (
+              "Analyze Flood Risk",
+              "Generate AI Recovery Plan",
+              "Generate preparedness plan",
+          ):
+              click(at, label)
+              check(at, f"click '{label}'")
+          PY
