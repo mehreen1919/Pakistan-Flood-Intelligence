@@ -41,6 +41,8 @@ jobs:
       # from the internet. These must match the file names in your repo.
       FLOOD_CSV_PATH: Pakistan_flood_dataset.csv
       RECOVERY_CSV_PATH: pakistan_asset_recovery_2025_prototype.csv
+      DISTRICTS_CSV_PATH: app_districts_reference.csv
+      RAIN_SCENARIOS_CSV_PATH: rainfall_scenario_multipliers.csv
 
     steps:
       # STEP 1 - Download a copy of your repository onto the temporary computer
