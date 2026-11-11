@@ -27,7 +27,7 @@ st.set_page_config(
 
 REPO_RAW = (
     "https://raw.githubusercontent.com/mehreen1919/"
-    "Smart-AI-Disaster-Resource-Response-System/refs/heads/main/"
+    "Pakistan-Flood-Intelligence/refs/heads/main/"
 )
 
 
