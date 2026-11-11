@@ -1,0 +1,17 @@
+province,district,bnd_pcode,area_km2,Total_pop,urban_share_pct,density_per_km2,avg_flood_pct,flood_year_rate
+Balochistan,Jaffarabad,PK207,1701.8,513813.0,30.8,301.9,25.54,0.48
+Gilgit Baltistan,Ghanche,PK303,8676.4,,,,42.22,0.76
+Gilgit Baltistan,Skardu,PK307,2119.0,,,,22.07,0.44
+Khyber Pakhtunkhwa,Charsadda,PK506,999.1,1616198.0,16.7,1617.7,41.07,0.8
+Khyber Pakhtunkhwa,Nowshera,PK526,1725.7,1518540.0,22.3,880.0,35.57,0.72
+Khyber Pakhtunkhwa,Swat,PK532,5348.3,2309570.0,30.1,431.8,32.98,0.64
+Punjab,Jhang,PK612,6345.1,2743416.0,21.8,432.4,26.29,0.36
+Punjab,Kasur,PK614,3986.7,3454996.0,25.8,866.6,14.71,0.16
+Punjab,Lahore,PK617,1729.9,11126285.0,100.0,6431.8,45.7,0.8
+Punjab,Multan,PK622,3648.2,4745109.0,43.4,1300.7,37.7,0.76
+Punjab,Rajanpur,PK629,12584.6,1995958.0,16.9,158.6,37.87,0.68
+Punjab,Vehari,PK636,4499.6,2897446.0,17.5,643.9,25.06,0.32
+Sindh,Badin,PK701,6575.0,1804516.0,21.6,274.5,43.11,0.8
+Sindh,Dadu,PK703,8017.5,1550266.0,24.7,193.4,35.13,0.6
+Sindh,Sukkur,PK723,5178.7,1487903.0,48.4,287.3,24.47,0.44
+Sindh,Thatta,PK727,7630.5,979817.0,18.0,128.4,39.42,0.72
