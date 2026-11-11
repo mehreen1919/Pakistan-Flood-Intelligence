@@ -56,6 +56,19 @@ RECOVERY_URL = data_source(
     "pakistan_asset_recovery_2025_prototype.csv"
 )
 
+# Small reference tables built from public data (2017 census population,
+# district areas, 116 years of national rainfall). Both are optional: if a
+# file cannot be read, the app falls back to its earlier assumptions.
+DISTRICTS_URL = data_source(
+    "DISTRICTS_CSV_PATH",
+    "app_districts_reference.csv"
+)
+
+RAIN_SCENARIOS_URL = data_source(
+    "RAIN_SCENARIOS_CSV_PATH",
+    "rainfall_scenario_multipliers.csv"
+)
+
 FLOOD_NUMERIC_CANDIDATES = [
     "rain_monsoon_mm",
     "rain_peak_month_mm",
@@ -301,6 +314,49 @@ def load_recovery_data():
     data["area_name"] = data["area_name"].astype(str).str.strip()
 
     return data, source
+
+
+@st.cache_data(show_spinner=False)
+def load_district_population():
+    """Census 2017 population and area per district, keyed by area name.
+    Returns {} if the file is missing, so the app keeps working."""
+    try:
+        table = pd.read_csv(DISTRICTS_URL)
+        table["district"] = table["district"].astype(str).str.strip()
+        table["Total_pop"] = pd.to_numeric(table["Total_pop"], errors="coerce")
+        table["area_km2"] = pd.to_numeric(table["area_km2"], errors="coerce")
+        table = table.dropna(subset=["Total_pop"])
+        return {
+            row["district"]: {
+                "population": float(row["Total_pop"]),
+                "area_km2": float(row["area_km2"])
+            }
+            for _, row in table.iterrows()
+        }
+    except Exception:
+        return {}
+
+
+@st.cache_data(show_spinner=False)
+def load_rain_factors():
+    """Low / Moderate / Severe rainfall factors from the 1901-2016 national
+    July-September record: 25th, 50th and 90th percentile, each divided by
+    the median so Moderate stays at 1.0. Falls back to the earlier fixed
+    factors if the file is missing."""
+    default = {"Low": 0.85, "Moderate": 1.0, "Severe": 1.3}
+    try:
+        table = pd.read_csv(RAIN_SCENARIOS_URL).set_index("percentile")
+        median = float(table.loc["p50", "monsoon_mm"])
+        factors = {
+            "Low": float(table.loc["p25", "monsoon_mm"]) / median,
+            "Moderate": 1.0,
+            "Severe": float(table.loc["p90", "monsoon_mm"]) / median
+        }
+        if not (0.3 < factors["Low"] < 1.0 < factors["Severe"] < 3.0):
+            return default, False
+        return {k: round(v, 2) for k, v in factors.items()}, True
+    except Exception:
+        return default, False
 
 
 def get_average(data, column):
@@ -2214,6 +2270,9 @@ recovery_df, recovery_source = load_recovery_data()
 flood_model = train_flood_model(flood_df)
 flood_model_ready = isinstance(flood_model, dict) and "model" in flood_model
 
+SCENARIO_RAIN_FACTORS, RAIN_FACTORS_FROM_HISTORY = load_rain_factors()
+DISTRICT_POPULATION = load_district_population()
+
 if recovery_df is not None:
     (
         recovery_model,
@@ -2266,6 +2325,12 @@ with prediction_tab:
     st.write(
         "Select an area to view historical flood conditions "
         "and enter expected weather conditions."
+    )
+    st.caption(
+        "Prototype data: the historical flood records have not been "
+        "checked against official flood reports, and some years known to "
+        "be severe (such as 2010 and 2022) do not stand out in them, so "
+        "treat the estimates as a demonstration of the method."
     )
 
     left, right = st.columns([1, 1.6], gap="large")
@@ -3383,8 +3448,14 @@ with future_tab:
                         f"Low {model_risk['Low']:.1f}% · "
                         f"Moderate {model_risk['Moderate']:.1f}% · "
                         f"Severe {model_risk['Severe']:.1f}% "
-                        f"(assuming monsoon rainfall ×0.85 / ×1.00 / ×1.30 of "
-                        f"the historical average). Selected scenario: "
+                        f"(assuming monsoon rainfall ×"
+                        f"{SCENARIO_RAIN_FACTORS['Low']:.2f} / ×1.00 / ×"
+                        f"{SCENARIO_RAIN_FACTORS['Severe']:.2f} of the "
+                        f"historical average"
+                        + (", set from the 1901–2016 national Jul–Sep rainfall "
+                           "record: 25th percentile, median, 90th percentile"
+                           if RAIN_FACTORS_FROM_HISTORY else "")
+                        + f"). Selected scenario: "
                         f"{model_risk[future_scenario]:.1f}%."
                     )
 
@@ -3507,6 +3578,20 @@ with future_tab:
                             errors="coerce"
                         ).fillna(0).sum()
                     )
+                    population_basis = "asset"
+                    scope_areas = sorted(assets["area_name"].unique())
+                    census_known = [
+                        a for a in scope_areas if a in DISTRICT_POPULATION
+                    ]
+                    # Use census population only when every area in scope has
+                    # a figure; otherwise keep the asset-based estimate so
+                    # areas are never mixed on different bases.
+                    if scope_areas and len(census_known) == len(scope_areas):
+                        exposed_people = float(sum(
+                            DISTRICT_POPULATION[a]["population"]
+                            for a in scope_areas
+                        ))
+                        population_basis = "census"
                     people_affected = exposed_people * scenario_flood_pct / 100
                     people_sheltered = people_affected * future_shelter_pct / 100
                     family_tents = float(
@@ -3527,9 +3612,20 @@ with future_tab:
                             f"{water_litres_day * future_supply_days:,.0f} litres "
                             f"of water and {rations_day * future_supply_days:,.0f} "
                             f"food rations. People affected = exposed population "
-                            f"× scenario flooded share. Exposed population adds up "
-                            f"asset-level estimates, which can overlap, so treat "
-                            f"it as an upper bound. The water figure uses the "
+                            f"× scenario flooded share. "
+                            + (
+                                f"Exposed population is the 2017 census total "
+                                f"for the selected area(s) "
+                                f"({exposed_people:,.0f}), and the flooded "
+                                f"share is applied evenly across it, so "
+                                f"treat the result as indicative. "
+                                if population_basis == "census" else
+                                f"Exposed population adds up asset-level "
+                                f"estimates, which can overlap, so treat it "
+                                f"as an upper bound (no census figure is "
+                                f"available for every selected area). "
+                            )
+                            + f"The water figure uses the "
                             f"commonly cited humanitarian minimum of 15 litres "
                             f"per person per day; the other rates are "
                             f"assumptions you can edit above."
