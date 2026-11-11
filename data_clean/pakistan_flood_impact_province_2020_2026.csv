@@ -1,0 +1,73 @@
+year,region,indicator,value,as_of_date,scope,source_url,note
+2022,Sindh,deaths,638,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Khyber Pakhtunkhwa,deaths,303,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Balochistan,deaths,278,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Punjab,deaths,191,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Azad Jammu and Kashmir,deaths,48,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Gilgit-Baltistan,deaths,22,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,NDMA figure; article gives no exact cutoff time
+2022,Pakistan,injured,12748,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,
+2022,Pakistan,houses_damaged,1750000,2022-09-14,season_cumulative,https://www.aa.com.tr/en/asia-pacific/death-toll-from-floods-in-pakistan-rises-to-over-1-480-as-54-more-die/2684642,"approx 1.75 million; 569,800 completely destroyed"
+2023,Punjab,deaths,73,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Punjab,injured,173,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Punjab,houses_damaged,85,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Khyber Pakhtunkhwa,deaths,66,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Khyber Pakhtunkhwa,injured,92,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Khyber Pakhtunkhwa,houses_damaged,575,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Sindh,deaths,27,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Sindh,injured,10,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Sindh,houses_damaged,342,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Balochistan,deaths,21,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Balochistan,injured,27,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Balochistan,houses_damaged,4193,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Islamabad,deaths,11,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Islamabad,injured,5,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Islamabad,houses_damaged,0,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Gilgit-Baltistan,deaths,7,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Gilgit-Baltistan,injured,2,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Azad Jammu and Kashmir,deaths,18,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Azad Jammu and Kashmir,injured,20,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Azad Jammu and Kashmir,houses_damaged,482,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,as-of inferred from article date
+2023,Pakistan,houses_damaged,5784,2023-09-22,season_cumulative,https://www.brecorder.com/news/amp/40264668,"national total; province rows sum to 5,677 (GB not reported)"
+2024,Pakistan,deaths,341,2024-09-05,season_cumulative,https://www.brecorder.com/news/amp/40321120,no province breakdown published in sources reached
+2024,Pakistan,injured,613,2024-09-05,season_cumulative,https://www.brecorder.com/news/amp/40321120,
+2024,Pakistan,houses_damaged,26732,2024-09-05,season_cumulative,https://www.brecorder.com/news/amp/40321120,"article calls these 'destroyed'; another source gives 24,026 damaged on 4 Sep"
+2025,Punjab,deaths,223,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Punjab,injured,654,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Khyber Pakhtunkhwa,deaths,502,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Khyber Pakhtunkhwa,injured,218,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Sindh,deaths,58,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Sindh,injured,78,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Balochistan,deaths,26,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Balochistan,injured,5,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Gilgit-Baltistan,deaths,41,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Gilgit-Baltistan,injured,52,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Azad Jammu and Kashmir,deaths,38,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Islamabad,deaths,9,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Pakistan,houses_damaged,7848,2025-09-07,season_cumulative,"https://dunyanews.tv/en/Pakistan/905056-monsoon-claims-907-lives-across-pakistan,-6,180-livestock-killed:-ndma-|-dunya-news",
+2025,Khyber Pakhtunkhwa,deaths,504,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Punjab,deaths,304,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Gilgit-Baltistan,deaths,41,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Azad Jammu and Kashmir,deaths,38,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Sindh,deaths,80,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Balochistan,deaths,30,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Islamabad,deaths,9,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,later NDMA snapshot via WHO; supersedes 7 Sep values
+2025,Khyber Pakhtunkhwa,health_facilities_damaged,60,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,source text internally inconsistent on partial vs complete damage
+2025,Punjab,health_facilities_damaged,38,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,source text internally inconsistent on partial vs complete damage
+2025,Sindh,health_facilities_damaged,25,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,source text internally inconsistent on partial vs complete damage
+2025,Gilgit-Baltistan,health_facilities_damaged,7,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,source text internally inconsistent on partial vs complete damage
+2025,Punjab,people_affected,4700000,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,OCHA/provincial figures cited by WHO
+2025,Khyber Pakhtunkhwa,people_affected,1600000,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,OCHA/provincial figures cited by WHO
+2025,Gilgit-Baltistan,people_affected,356000,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,OCHA/provincial figures cited by WHO
+2025,Sindh,people_affected,185000,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,OCHA/provincial figures cited by WHO
+2025,Pakistan,deaths,1006,2025-09-16,season_cumulative,https://www.emro.who.int/images/stories/pakistan/Health-Emergency-Situation-Report-Monsoon-Floods-9-September-2025.pdf,
+2026,Khyber Pakhtunkhwa,deaths,55,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Punjab,deaths,36,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Azad Jammu and Kashmir,deaths,7,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Balochistan,deaths,6,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Sindh,deaths,2,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Gilgit-Baltistan,deaths,1,2026-07-26,season_cumulative,https://www.dawn.com/news/2018660,PARTIAL SEASON snapshot (since 26 Jun); as-of inferred
+2026,Khyber Pakhtunkhwa,houses_damaged,81,2026-07-21,season_cumulative,https://prcs.org.pk/documents/view/MjAyNnwyLlBSQ1MgTW9uc29vbiBTaXRSZXAgLSAyMDI2ICgxKS5wZGY,"PARTIAL SEASON snapshot, cumulative since 7 Jul (Red Crescent report); 81 = full+partial"
+2026,Gilgit-Baltistan,houses_damaged,49,2026-07-21,season_cumulative,https://prcs.org.pk/documents/view/MjAyNnwyLlBSQ1MgTW9uc29vbiBTaXRSZXAgLSAyMDI2ICgxKS5wZGY,"PARTIAL SEASON snapshot, cumulative since 7 Jul (Red Crescent report); 49 = full+partial"
+2026,Azad Jammu and Kashmir,houses_damaged,25,2026-07-21,season_cumulative,https://prcs.org.pk/documents/view/MjAyNnwyLlBSQ1MgTW9uc29vbiBTaXRSZXAgLSAyMDI2ICgxKS5wZGY,"PARTIAL SEASON snapshot, cumulative since 7 Jul (Red Crescent report); 25 = full+partial"
+2026,Punjab,houses_damaged,16,2026-07-21,season_cumulative,https://prcs.org.pk/documents/view/MjAyNnwyLlBSQ1MgTW9uc29vbiBTaXRSZXAgLSAyMDI2ICgxKS5wZGY,"PARTIAL SEASON snapshot, cumulative since 7 Jul (Red Crescent report); 16 = full+partial"
+2026,Balochistan,houses_damaged,7,2026-07-21,season_cumulative,https://prcs.org.pk/documents/view/MjAyNnwyLlBSQ1MgTW9uc29vbiBTaXRSZXAgLSAyMDI2ICgxKS5wZGY,"PARTIAL SEASON snapshot, cumulative since 7 Jul (Red Crescent report); 7 = full+partial"

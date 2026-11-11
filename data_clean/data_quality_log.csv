@@ -1,0 +1,24 @@
+dataset,check,result,action
+flood_history,rows / nulls / duplicates,"425 rows, 0 nulls, 0 duplicate area-years, 17 areas x 25 years complete",kept all
+flood_history,flood label vs flood_pct,35 rows disagree with a 10% rule (labels overlap in the 8-12% band),added label_conflict flag; labels unchanged
+flood_history,rain outliers within each area,15 rows flagged (|modified z|>3.5),added rain_outlier_for_area flag; kept (heavy rain is real signal)
+flood_history,known flood years,"2010 and 2022 are not visible: Sukkur 2022 = 2.5%, Badin 2010 = 0.7%; yearly mean flood_pct is flat (~30%)",NOT fixable by cleaning; needs real source data
+flood_history,climate plausibility,"Skardu monsoon temp 33.3C (high-altitude, normally ~20-25C); Ghanche monsoon rain 629mm (arid region); Lahore 722mm vs adjacent Kasur 166mm",documented; not altered
+flood_history,rs_fsm_lgbm_pakistan,one constant value per area (static susceptibility score),"kept; treat as area attribute, not yearly variable"
+asset_recovery,rows / nulls / duplicate ids,"500 rows, 0 nulls, 0 duplicate asset_id; all ratings in 1-5; no negative cost, days or workers",kept all
+asset_recovery,cost outliers within asset type (log IQR),0 rows,added cost_outlier_for_type flag; kept
+asset_recovery,priority label vs score bands,0 mismatches,added label_matches_score flag
+asset_recovery,provenance,"all 500 rows are synthetic_asset_record_calibrated_to_NDMA_2025, single year 2025",added nothing; stated in report
+boundaries,area totals,"ADM1/ADM2/ADM3 area all sum to 876,143.7 km2; 160 districts, no nulls or duplicates",kept
+boundaries,pcodes,"province codes differ from the population file (e.g. KP = PK5 here, PK2 there)","joined by cleaned name, not code"
+boundaries,coordinates,none in the file,cannot map; flagged in report
+population,totals,"national total 207,774,520; urban+rural and male+female+transgender equal total in 130/131 districts",flag split_sum_ok
+population,scope,no Gilgit-Baltistan or Azad Kashmir (preliminary 2017 release),"added those districts from boundaries (area only, population blank)"
+population,join to boundaries,122/131 districts joined (5 via manual name fix),"unmatched: Chitral, FR Bannu, FR Dera Ismail Khan, FR Kohat, FR Lakki Marwat, FR Peshawar, FR Tank, Karachi City, Kohistan"
+population,duplicate files,pak_admpop_adm2_v2.csv and pak_admpop_adm3.csv are exact copies of workbook sheets Admin2/Admin3,dropped as redundant
+app_districts,17 app districts found in boundaries,16/17; with population 14/17,"missing population: Ghanche, Skardu"
+rainfall,completeness,"1,392 rows = 116 years x 12 months, no nulls, no duplicates; header had a leading space in ' Year'",renamed columns
+rainfall,scope,"single national series, ends 2016","usable for scenario calibration only, not per-district"
+flood_impact,multiple snapshots,"2025 has two as-of dates (7 Sep, 16 Sep)",wide table keeps the latest snapshot per year/region/indicator
+flood_impact,provincial sums vs national,"2023 houses 5,677 vs 5,784; 2025 (7 Sep) deaths 897 vs 907","kept; gaps noted, not filled"
+flood_impact,2026,partial season snapshot (late July),"kept, flagged in the source file"
