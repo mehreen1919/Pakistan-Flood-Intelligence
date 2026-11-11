@@ -22,14 +22,19 @@ An optional **AI situation briefing** appears under each plan. Without an API ke
 ```
 app.py                                        the Streamlit app
 requirements.txt                              packages to install
-Pakistan_flood_dataset.csv                    historical flood data (add this file here)
-pakistan_asset_recovery_2025_prototype.csv    prototype recovery data (add this file here)
+Pakistan_flood_dataset.csv                    historical flood data
+pakistan_asset_recovery_2025_prototype.csv    prototype recovery data
+app_districts_reference.csv                   census 2017 population and area for the app's districts
+rainfall_scenario_multipliers.csv             rainfall percentiles from the 1901-2016 national record
 sample_data/                                  CSVs for trying the upload feature
+data_raw/                                     original population, boundary and rainfall files
+data_clean/                                   cleaned datasets, flood impact tables, quality log, cleaning script
+DATA_SOURCES.md                               what each dataset is and whether it is real or synthetic
 Netsol_Project_Demo.ipynb                     Colab notebook that runs the app
 .github/workflows/ci.yml                      automatic check on every push
 ```
 
-Keep the two dataset files in the top folder. The app reads them from there; if they are not present it downloads them from this repository on GitHub.
+Keep the dataset files (including the two small reference tables) in the top folder. The app reads them from there; if they are not present it downloads them from this repository on GitHub.
 
 ## Run it on your computer
 
@@ -60,7 +65,16 @@ Set an `ANTHROPIC_API_KEY` as an environment variable, in Colab Secrets, or in S
 
 `.github/workflows/ci.yml` runs on every push and pull request. It installs the packages, checks `app.py` for errors, then opens the app and clicks through the main buttons.
 
+## Data sources and cleaning
+
+- **Population and area:** Pakistan Bureau of Statistics 2017 census (preliminary release, via OCHA) and the OCHA administrative boundaries table. Used for the relief-supply estimates in the Future tab. Gilgit-Baltistan and Azad Kashmir are not in the census release, so those areas use the asset-based estimate.
+- **Rainfall scenarios:** the Low, Moderate and Severe rainfall factors come from the 25th percentile, median and 90th percentile of national July to September rainfall, 1901 to 2016.
+- **Flood impact:** `data_clean/pakistan_flood_impact_province_2020_2026.csv` (province level, 2022 to 2026) and `data_clean/district_flood_impact_sourced.csv` (some districts in KP and Punjab) come from NDMA and PDMA reports, each row with its source link and date. They are not yet used by the app. See `DATA_SOURCES.md`.
+- **Cleaning:** `data_clean/data_quality_log.csv` lists every check made on every dataset. Problems are flagged, not silently fixed.
+
 ## Limitations
+
+- The historical flood records have not been checked against official reports, and severe years such as 2010 and 2022 do not stand out in them. Treat flood-risk estimates as a demonstration of the method.
 
 - The recovery priority labels are derived from the same inputs the model sees, so the model mainly learns that scoring rule. With real field-assessed priorities, the same pipeline would learn from actual decisions.
 - Future scenarios are what-if calculations, not forecasts.
